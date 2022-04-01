@@ -34,10 +34,11 @@ const LeftSideBar = () => {
     }
 
     return (
-        <animated.div style={transitions} className="absolute flex flex-col bg-white border-r border-gray-100 w-72 h-children">
-            {menuItems.map((item)=> {
+        <animated.div style={transitions} className="absolute flex flex-col bg-white bg-opacity-90 hover:bg-opacity-100 duration-200 border-r border-gray-100 w-72 h-children z-40">
+            {menuItems.map((item, key):any=> {
                 return (
-                    <MenuItem menuItemName={item}/>
+                    <div key={key}><MenuItem menuItemName={item}/></div>
+                    
                 )
             })
             }
