@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
 import { useRecoilState } from 'recoil'
-import Grid from '../components/Grid'
-import { signInPopUpState } from '../components/layout/Header'
-import Layout from '../components/layout/Layout'
-import LeftSideBar from '../components/LeftSideBar'
+import Grid from '../../components/Grid'
+import { signInPopUpState } from '../../components/layout/Header'
+import Layout from '../../components/layout/Layout'
+import LeftSideBar from '../../components/LeftSideBar'
 
 const Workouts: NextPage = () => {
   const [signInPopUp,setSignInPopUp] = useRecoilState(signInPopUpState)
