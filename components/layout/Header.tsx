@@ -12,7 +12,7 @@ const Header = () => {
     const [signedInPopUp, setSignedInPopUp] = useRecoilState(signInPopUpState)
     const [toggleMenu, setToggleMenu] = useState(false)
     return (
-        <div className="px-2 bg-white flex h-20 w-full justify-between items-end pb-2 shadow z-50">
+        <header className="px-2 bg-white flex h-20 w-full justify-between items-end pb-2 shadow z-50">
             <div>
                 <Link href="/" >
                     <p className='flex text-4xl text-yellow-500 font-semibold hover:cursor-pointer'>BUDDYWOD</p>
@@ -68,7 +68,7 @@ const Header = () => {
                     </div>}
 
             </div>
-        </div>
+        </header>
     )
 }
 
