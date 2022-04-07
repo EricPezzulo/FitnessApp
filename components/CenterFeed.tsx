@@ -2,14 +2,11 @@ import Footer from "./layout/Footer"
 
 const CenterFeed = ({children}:any) => {
   return (
-    <div className='w-full h-min-screen'>
-      <div className='overflow-y-auto flex flex-col items-center w-full h-children z-10'>
+    <div className='flex-grow w-full h-screen'>
+      <div className='flex flex-col items-center w-full h-children z-10'>
         {children}
-      <div className="flex w-full"> <Footer />  </div>
-
       </div>
-
-     </div>
+    </div>
   )
 }
 

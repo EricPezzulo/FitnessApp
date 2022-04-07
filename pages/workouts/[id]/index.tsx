@@ -1,6 +1,17 @@
+import { gql } from 'apollo-server-micro'
 import React from 'react'
 import { workouts } from '../../../workouts'
 
+export const FetchWorkout = gql`
+  query FetchWorkout($id: String!){
+    fetchWorkout(id: $id) {
+      id
+      muscleGroup
+      workoutName
+      exerceies 
+    }
+  }
+`
 
 
 export async function getServerSideProps({query}:any) {

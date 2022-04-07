@@ -17,29 +17,33 @@ model User {
 }
 
 model Workout {
-  id         String       @id @default(cuid())
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
-  workoutName       String
-  exercises Exercises[]
-  muscleGroup   String
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  workoutName String
+  muscleGroup String
+  main        String[]
+  warmup      String[]
 }
 
-model Exercises {
-  id      String    @id @default(cuid())
-  main    Main[]
-  warmup  Warmup[]
-  workout Workout[]
-}
+// model Exercises {
+//   id      String    @id @default(cuid())
+//   main    Main[]
+//   warmup  Warmup[]
+//   workout Workout[]
+// }
 
-model Main {
-  id              String       @id @default(cuid())
-  exercieses      Exercises[]
-  listOfExerceies String[]
-}
+// model Main {
+//   id              String       @id @default(cuid())
+//   // exercieses      Exercises[]
+//   listOfExerceies String[]
+//   workout     Workout[]
+// }
 
-model Warmup {
-  id              String       @id @default(cuid())
-  exercieses      Exercises[]
-  listOfExerceies String[]
-}
+// model Warmup {
+//   id              String       @id @default(cuid())
+//   // exercieses      Exercises[]
+//   listOfExerceies String[]
+//   workout     Workout[]
+
+// }

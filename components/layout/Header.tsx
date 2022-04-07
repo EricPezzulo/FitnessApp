@@ -61,7 +61,6 @@ const Header = () => {
                                         <li className=" duration-100
                                         " onClick={()=> setSignedIn(!signedIn)}>Sign Out</li>
                                     </div>
-
                                    
                                 </ul>
                             </div>

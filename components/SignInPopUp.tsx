@@ -6,7 +6,7 @@ import { signInPopUpState } from "./layout/Header"
 const SignInPopUp = ({style}:any) => {
     const [signInPopUp, setSignInPopUp] = useRecoilState(signInPopUpState)
     return (
-        <animated.div style={style} className="fixed flex items-center justify-center w-full z-50 bg-gray-400 bg-opacity-40 h-full">
+        <animated.div style={style} className="fixed flex items-center justify-center w-full z-50 bg-gray-400 bg-opacity-40 h-auto">
             <div className="bg-white absolute flex flex-col shadow-xl w-80 h-auto p-3 rounded">
                 <button className='flex flex-1 self-end' onClick={() => setSignInPopUp(!signInPopUp)}>
                     <div className="w-8 text-yellow-500 bg-yellow-100 hover:bg-yellow-200 duration-300 rounded ease-in-out"><CloseOutline /></div>
