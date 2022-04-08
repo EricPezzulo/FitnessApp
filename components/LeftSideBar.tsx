@@ -34,8 +34,8 @@ const LeftSideBar = () => {
     }
 
     return (
-        <animated.div style={transitions} className="absolute shadow flex flex-col bg-white bg-opacity-90 hover:bg-opacity-100 duration-200 border-r border-gray-100 w-72 h-auto z-40 rounded-br-md">
-           <div className="overflow-auto overflow-x-hidden">
+        <animated.div style={transitions} className="relative shadow flex flex-col bg-white bg-opacity-90 hover:bg-opacity-100 duration-200 border-r border-gray-100 w-72 z-50 min-h-full rounded-br-md ">
+           <div className="flex flex-col">
                {menuItems.map((item, key):any=> {
                 return (
                     <div key={key}><MenuItem menuItemName={item}/></div>

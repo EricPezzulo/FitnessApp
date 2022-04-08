@@ -12,7 +12,7 @@ const Workouts: NextPage = () => {
   }
   return (
    <Layout>
-     <div className='flex h-full w-full bg-gray-50'><Grid/></div>
+     <div className='flex h-auto w-full bg-gray-50'><Grid/></div>
  
    </Layout>
   )

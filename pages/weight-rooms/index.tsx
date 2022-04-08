@@ -7,10 +7,8 @@ const index = () => {
   return (
     <Layout>
       <div className='flex flex-col w-full h-full'>
-
-      
         <div className='flex flex-col items-center my-8'>
-            <h1 className='text-3xl '>Weight Rooms</h1>
+            <h1 className='text-3xl'>Weight Rooms</h1>
             <p className='text-xl text-center'>Weight Rooms are smaller subcommunities that focus on a specific style of training.</p>
             
             <ul className='text-center'>
@@ -25,13 +23,13 @@ const index = () => {
         <div className='flex flex-col flex-1 w-full h-full bg-yellow-300'>
           <div className='w-full pt-3 px-5 sm:grid gap-5 sm:grid-cols-2 md:grid-cols-3'>
               <div className='mt-2 mb-4'>
-                <WeightroomCard title={"Bodybuilding"} />
+                <WeightroomCard title={"Bodybuilding"} linksTo={"bodybuilding"} />
               </div>
               <div className='mt-2 mb-4'>
-                <WeightroomCard title={"Powerlifting"} />
+                <WeightroomCard title={"Powerlifting"} linksTo={"powerlifting"}/>
               </div>
               <div className='my-2'>
-                <WeightroomCard title={"Functional Fitness"} />
+                <WeightroomCard title={"Functional Fitness"} linksTo={"functionalfitness"}/>
               </div>
         </div> 
       </div></div>

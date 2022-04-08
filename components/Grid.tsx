@@ -5,9 +5,9 @@ import CenterFeed from "./CenterFeed"
 import { signInPopUpState } from "./layout/Header"
 
 const dummyList = "abcdefghijklmnopqrstuvwxyz"
-const Tile = ({ elem,key}: any) => {
+const Tile = ({elem}: any) => {
     return (
-        <div key={key} className='bg-white h-96 w-full sm:h-44 sm:w-full md:w-56 flex items-center justify-center text-5xl hover:bg-yellow-100 duration-200 hover:cursor-pointer rounded shadow'>{elem}</div>
+        <div className='bg-white h-96 w-full sm:h-44 sm:w-full md:w-56 flex items-center justify-center text-5xl hover:bg-yellow-100 duration-200 hover:cursor-pointer rounded shadow'>{elem}</div>
     )
 }
 console.log(workouts)
@@ -26,7 +26,7 @@ const Grid = () => {
         console.log(workout)
       }
     return (
-        <div className='bg-gray-50 w-full overflow-auto flex items-center justify-center'>
+        <div className='bg-gray-50 w-full overflow-auto flex items-center justify-center scrollbar-hide'>
             <CenterFeed>
             <div className='sm:p-5 flex flex-wrap justify-center items-center md:grid md:place-items-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 4xl:grid-cols-7 gap-5 bg-gray-50 scrollbar-hide'>
                 {workouts.map((workout, key):any=> {
@@ -38,9 +38,9 @@ const Grid = () => {
                                     {workout.workoutName}
                                 </p>
                                
-                             {workout.main?.map((item):any=>{
+                             {workout.main?.map((item, key):any=>{
                                   return (
-                                      <p className="font-light text-base duration-200 opacity-0 group-hover:opacity-100">
+                                      <p key={key} className="font-light text-base duration-200 opacity-0 group-hover:opacity-100">
                                         {item}
                                     </p>
                                   )
@@ -54,7 +54,10 @@ const Grid = () => {
                 })}
                 {list.map((elem,key):any => {
                     return (
-                            <Tile elem={elem} key={key}/>
+                        <div key={key}>
+
+                            <Tile elem={elem} />
+                            </div>
                     )
                 })}
             </div>

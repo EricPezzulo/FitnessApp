@@ -15,25 +15,28 @@ const Layout = ({ children }: any) => {
         leave: { opacity: 0 }
     });
     return (
-        <div className='flex flex-col h-screen'>
+        <div className='flex flex-col min-h-screen bg-white jusfify-between'>
             {signInPopUp &&
                 transitions(
                     ({ styles, item }: any) =>
                         <SignInPopUp styles={styles} item={item} />
                 )
             }
-            <div className=" z-50">
+            <div className="">
                 <Header />
+                <div className="flex absolute top-20">
+                    <LeftSideBar />
+                </div>
             </div>
 
-            <div className="flex-grow">
-                <LeftSideBar />
-                <CenterFeed>
+            <div className="flex flex-1 bg-white">
+                
+                {/* <CenterFeed> */}
                     {children} 
-                </CenterFeed>
+                {/* </CenterFeed> */}
             </div>
 
-            <div className="w-full z-50">
+            <div className="flex w-full z-50">
                    <Footer/> 
             </div>
         </div>
