@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import { useRouter } from 'next/router'
 import { useRecoilState } from 'recoil'
 import CenterFeed, { articles } from '../components/CenterFeed'
 import HomepagePost from '../components/homepage/HomepagePost'
@@ -8,11 +9,11 @@ import LeftSideBar from '../components/LeftSideBar'
 
 const Home: NextPage = () => {
   const [signInPopUp, setSignInPopUp] = useRecoilState(signInPopUpState)
-
+  const router = useRouter()
   return (
     <Layout>
       <div className='flex flex-col w-full h-full'>
-          <div className='grid place-items-center w-full pb-5'>
+          <div onClick={()=> router.push(`/wod`)} className='grid place-items-center w-full pb-5'>
             <div className='flex group relative w-full h-full hover:cursor-pointer'>
               <div className='absolute w-full h-full bg-gray-900 bg-opacity-60 group-hover:bg-opacity-80 z-30 duration-200'></div>
                 <img className='object-cover flex w-full max-h-108' src="https://external-preview.redd.it/b3NfiLJNwTjh_xxyNN52lpWlhVqMjMHR5wsWIIcrkzs.jpg?auto=webp&s=64f2aae47ebcea88cf357b3983a38fe259aa8a31" alt="hero" />

@@ -3,7 +3,7 @@ import { ChevronRight } from "@styled-icons/boxicons-regular/ChevronRight";
 import { ChevronLeft } from "@styled-icons/boxicons-regular/ChevronLeft";
 import { useSpring, animated, useTransition } from 'react-spring'
 import { atom, useRecoilState, useRecoilValue } from "recoil";
-const menuItems =["Workouts","Weight-Rooms","Supplements","Programs","Promos","Athletes","Online Training", "Personal Training"]
+const menuItems =["Workouts","Weight-Rooms","WOD","Programs","Promos","Athletes","Online Training", "Personal Training"]
 const  MenuItem = ({menuItemName}:any) => {
     const router = useRouter();
     const [toggleMenu, setToggleMenu] = useRecoilState(toggleMenuState)

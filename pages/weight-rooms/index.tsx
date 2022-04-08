@@ -6,7 +6,7 @@ import WeightroomCard from '../../components/WeightroomCard'
 const index = () => {
   return (
     <Layout>
-      <div className='flex flex-col w-full h-full'>
+      <div className='flex flex-col bg-gray-50 w-full h-full'>
         <div className='flex flex-col items-center my-8'>
             <h1 className='text-3xl'>Weight Rooms</h1>
             <p className='text-xl text-center'>Weight Rooms are smaller subcommunities that focus on a specific style of training.</p>

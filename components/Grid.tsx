@@ -7,7 +7,7 @@ import { signInPopUpState } from "./layout/Header"
 const dummyList = "abcdefghijklmnopqrstuvwxyz"
 const Tile = ({elem}: any) => {
     return (
-        <div className='bg-white h-96 w-full sm:h-44 sm:w-full md:w-56 flex items-center justify-center text-5xl hover:bg-yellow-100 duration-200 hover:cursor-pointer rounded shadow'>{elem}</div>
+        <div  className='bg-white h-96 w-full sm:h-44 sm:w-full md:w-56 flex items-center justify-center text-5xl hover:bg-yellow-100 duration-200 hover:cursor-pointer rounded shadow'>{elem}</div>
     )
 }
 console.log(workouts)
@@ -17,12 +17,10 @@ const Grid = () => {
     const [signInPopUp,setSignInPopUp] = useRecoilState(signInPopUpState)
 
     const handleClick = (workout:any) => {
-        // if (!signInPopUp) {
-        //  setSignInPopUp((prev)=> !prev)   
-        // }
-        // else{
-        //     router.push(``)
-        // }
+        if (!signInPopUp) {
+         setSignInPopUp((prev)=> !prev)   
+        }
+        
         console.log(workout)
       }
     return (
@@ -54,10 +52,10 @@ const Grid = () => {
                 })}
                 {list.map((elem,key):any => {
                     return (
-                        <div key={key}>
+                        <div onClick={handleClick} key={key}>
 
                             <Tile elem={elem} />
-                            </div>
+                        </div>
                     )
                 })}
             </div>

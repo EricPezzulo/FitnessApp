@@ -5,14 +5,17 @@ import { useTransition } from 'react-spring'
 import SignInPopUp from "../SignInPopUp"
 import LeftSideBar from "../LeftSideBar"
 import CenterFeed from "../CenterFeed"
+import {submitScorePopUpState} from "../../pages/wod"
+import SubmitScorePopUp from "../SubmitScorePopUp"
 
 const Layout = ({ children }: any) => {
 
     const [signInPopUp, setSignInPopUp] = useRecoilState(signInPopUpState)
+    const [submitScorePopUp, setSubmitScorePopUp] = useRecoilState(submitScorePopUpState)
     const transitions = useTransition(signInPopUp, {
         from: { opacity: 0 },
         enter: { opacity: 1 },
-        leave: { opacity: 0 }
+        leave: { opacity: 0 },
     });
     return (
         <div className='flex flex-col min-h-screen bg-white jusfify-between'>
@@ -22,7 +25,13 @@ const Layout = ({ children }: any) => {
                         <SignInPopUp styles={styles} item={item} />
                 )
             }
-            <div className="">
+            {submitScorePopUp &&
+                transitions(
+                    ({ styles, item }: any) =>
+                        <SubmitScorePopUp styles={styles} item={item} />
+                )
+            }
+            <div>
                 <Header />
                 <div className="flex absolute top-20">
                     <LeftSideBar />
