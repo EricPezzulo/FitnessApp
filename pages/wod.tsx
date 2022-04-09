@@ -16,7 +16,7 @@ const WOD = () => {
       }
     return (
         <Layout>
-            <div className="bg-gray-50 flex flex-col w-full items-center">
+            <div className="bg-gray-50 flex flex-col w-full items-center z-40">
                 <div className="mt-10">
                     <h1 className="text-3xl">Workout Of The Day: <span className="text-yellow-400 font-semibold">FRAN</span></h1>
                 </div>
