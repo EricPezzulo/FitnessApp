@@ -4,17 +4,42 @@ import { useRouter } from 'next/router'
 import { useRecoilState } from 'recoil'
 import { signInPopUpState } from '../../components/layout/Header'
 import Layout from '../../components/layout/Layout'
-export const Tile = ({elem}: any) => {
-      return (
-          <div className='bg-white h-96 w-full sm:h-44 sm:w-full md:w-56 flex items-center justify-center text-5xl hover:bg-yellow-100 duration-200 hover:cursor-pointer rounded shadow'>{elem}</div>
+import {sanityClient, urlFor} from '../../sanity'
+
+export const Tile = ({workout}: any) => {
+  const {data:session}:any = useSession()
+  const [signInPopUp,setSignInPopUp] = useRecoilState(signInPopUpState)
+
+  const router = useRouter()
+  const handleClick = ()=> {
+    if(!session){
+       setSignInPopUp((prev)=> !prev)   
+      } else {
+        router.push(`/workouts/${workout?.slug?.current}`)
+      }
+  }
+  return (
+          <div className='group  bg-white h-96 w-full sm:h-44 sm:w-full sm:w-56  text-5xl hover:bg-yellow-100 duration-200 hover:cursor-pointer rounded shadow items-center justify-center flex'
+          onClick={handleClick} title="See Full Workout">
+            <div className='flex items-center justify-center'>
+              <p className='group-hover:hidden duration-150 text-center relative'>{workout.title}</p>
+              </div>
+              <div className='flex flex-col text-center items-center justify-center'>
+               {workout.body.map((exercise:any) => {
+                return (
+                  <p key={exercise._key} className='text-2xl font-light sm:font-normal sm:text-base hidden group-hover:flex duration-150'>
+                    {exercise.children[0].text}
+                  </p>
+                )
+              }
+              ).slice(0,2)} 
+              <div><p className='text-base hidden group-hover:flex duration-150 text-orange-600 animate-pulse'>click to see full workout</p></div>
+              </div>
+            </div>
       )
   }
-const Workouts: NextPage = () => {
-  const dummyList = "abcdefghijklmnopqrstuvwxyz"
+const Workouts: NextPage = ({workouts}:any) => {
   const {data:session}:any = useSession()
-  const router = useRouter()
-
-  let list = dummyList.toUpperCase().split("")
   const [signInPopUp,setSignInPopUp] = useRecoilState(signInPopUpState)
   const handleClick = () => {
     if(!session)
@@ -25,18 +50,29 @@ const Workouts: NextPage = () => {
       //   router.push(`/workouts/${}`)
       // }
     }
+    console.log(workouts)
   return (
    <Layout>
-     <div className='flex h-full w-full bg-gray-50 z-40'>
+     <div className='flex flex-col min-h-full w-full bg-gray-50 z-40'>
      <div className='w-full overflow-auto flex items-center justify-center scrollbar-hide'>
-            <div className='grid container place-items-center  gap-5 w-full md:p-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
-                    {list.map((elem,key):any => {
+            <div className='grid p-2 sm:container place-items-center gap-5 w-full md:p-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+                    
+                    {workouts.map((workout:any)=>{
+                      return (
+                        <div className='w-full' key={workout._id}>
+                          <Tile workout={workout}/>
+                        </div>
+                      )
+                    })
+                    
+                    }
+                    {/* {list.map((elem,key):any => {
                         return (
                             <div className="flex w-full items-center justify-center" onClick={handleClick} key={key}>
                                 <Tile elem={elem} />
                             </div>
                         )
-                    })}
+                    })} */}
             </div>
         </div>
      </div>
@@ -46,3 +82,26 @@ const Workouts: NextPage = () => {
 }
 
 export default Workouts;
+
+export const getServerSideProps = async() => {
+  const query = `*[_type == "workout"]{
+    _id, 
+    title,
+    slug,
+    muscleGroup,
+    author-> {
+    name,
+    slug
+  },
+  mainImage {
+    asset
+  },
+  body,
+  }`
+  const workouts = await sanityClient.fetch(query);
+  return {
+    props:{
+      workouts
+    }
+  }
+}
