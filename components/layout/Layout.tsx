@@ -45,7 +45,7 @@ const Layout = ({ children }: any) => {
                 {/* </CenterFeed> */}
             </div>
 
-            <div className="flex w-full z-50">
+            <div className="flex w-full z-40">
                    <Footer/> 
             </div>
         </div>

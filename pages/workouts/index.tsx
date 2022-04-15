@@ -1,8 +1,9 @@
 import type { NextPage } from 'next'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import { useRecoilState } from 'recoil'
 import { signInPopUpState } from '../../components/layout/Header'
 import Layout from '../../components/layout/Layout'
-
 export const Tile = ({elem}: any) => {
       return (
           <div className='bg-white h-96 w-full sm:h-44 sm:w-full md:w-56 flex items-center justify-center text-5xl hover:bg-yellow-100 duration-200 hover:cursor-pointer rounded shadow'>{elem}</div>
@@ -10,14 +11,19 @@ export const Tile = ({elem}: any) => {
   }
 const Workouts: NextPage = () => {
   const dummyList = "abcdefghijklmnopqrstuvwxyz"
-  
+  const {data:session}:any = useSession()
+  const router = useRouter()
 
   let list = dummyList.toUpperCase().split("")
   const [signInPopUp,setSignInPopUp] = useRecoilState(signInPopUpState)
-  const handleClick = (workout:any) => {
+  const handleClick = () => {
+    if(!session)
       if (!signInPopUp) {
        setSignInPopUp((prev)=> !prev)   
       }
+      // else{
+      //   router.push(`/workouts/${}`)
+      // }
     }
   return (
    <Layout>

@@ -1,13 +1,13 @@
 import { atom, useRecoilState } from "recoil"
+import type { NextPage } from 'next'
 import Layout from "../components/layout/Layout"
 import UserScoreCard from "../components/WOD/UserScoreCard"
 export const submitScorePopUpState = atom({
     key: "submitScorePopUpState",
     default: false
 })
-const WOD = () => {
+const WOD: NextPage = () => {
     const [submitScorePopUp, setSubmitScorePopUp] = useRecoilState(submitScorePopUpState)
-
     const handleClick = () => {
         if (!submitScorePopUp) {
             setSubmitScorePopUp((prev)=> !prev)   
@@ -17,7 +17,7 @@ const WOD = () => {
     return (
         <Layout>
             <div className="bg-gray-50 flex flex-col w-full items-center z-40">
-                <div className="mt-10">
+                <div className="mt-3">
                     <h1 className="text-3xl">Workout Of The Day: <span className="text-yellow-400 font-semibold">FRAN</span></h1>
                 </div>
                 <div className="mt-5 text-lg bg-white p-3 shadow rounded-md">
@@ -33,7 +33,7 @@ const WOD = () => {
                 </div>
                 <div className="flex flex-col w-full items-center justify-center pb-10">
                     <div className="flex flex-col w-full container items-center justify-center">
-                        <div className="flex w-full sm:max-w-xl justify-between items-center">
+                        <div className="flex w-full sm:max-w-xl justify-between items-center px-3 sm:px-0">
                             <h2 className="text-3xl my-5 font-semibold text-left">Scores:</h2>
                             <div className="flex flex-col">
                                 <button className='rounded bg-yellow-300  px-2 py-1 'onClick={handleClick}>Sumbit Score</button>

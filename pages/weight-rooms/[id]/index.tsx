@@ -54,22 +54,23 @@ const WeightRoom: NextPage = () => {
                       <div className='flex w-7 ml-1'><MinusCircle /></div>
                     </div>
                   }
-                </button></div>
-
+                </button>
+                </div>
             </div>
             <p className='px-2 pb-5 sm:pb-0'>
               {roomData[0].welcomeMsg}
             </p>
+            <hr className='my-2'/>
+              <div className='flex w-full'>
+                <div className='shadow rounded p-3'></div>
+            </div>
             <div className='grid place-items-center grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 w-full sm:py-10'>
               <RoomCard title={"20 REP SQUAT PROGRAM"} img={"https://image.boxrox.com/2021/02/Front-Squat-workouts.jpg"} />
               <RoomCard title={"20 REP SQUAT PROGRAM"} img={"https://image.boxrox.com/2021/02/Front-Squat-workouts.jpg"} />
               <RoomCard title={"20 REP SQUAT PROGRAM"} img={"https://image.boxrox.com/2021/02/Front-Squat-workouts.jpg"} />
               <RoomCard title={"20 REP SQUAT PROGRAM"} img={"https://image.boxrox.com/2021/02/Front-Squat-workouts.jpg"} />
-              
               <RoomCard title={"20 REP SQUAT PROGRAM"} img={"https://image.boxrox.com/2021/02/Front-Squat-workouts.jpg"} />
             </div>
-            
-                  
           </div>
         </div>
       </div>

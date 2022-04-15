@@ -11,7 +11,7 @@ const SubmitScorePopUp = ({ style }: any) => {
     const [submitScorePopUp, setSubmitScorePopUp] = useRecoilState(submitScorePopUpState)
 
     return (
-        <animated.div style={style} className="absolute min-h-full flex items-center justify-center w-full  z-50 bg-gray-400 bg-opacity-40">
+        <animated.div style={style} className="fixed min-h-full flex items-center justify-center w-full z-60 bg-gray-400 bg-opacity-40">
         <div className="bg-white relative top-1/2 flex flex-col shadow-xl w-80 h-auto p-3 rounded border-2 border-yellow-500">
             <button className='flex flex-1 self-end' onClick={() => setSubmitScorePopUp(!submitScorePopUp)}>
                 <div className="w-8 text-yellow-500 bg-yellow-100 hover:bg-yellow-200 duration-300 rounded ease-in-out"><CloseOutline /></div>

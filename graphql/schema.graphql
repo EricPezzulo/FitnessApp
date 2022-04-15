@@ -2,18 +2,20 @@
 ### Do not make changes to this file directly
 
 
-type Main {
-  main: String
+type Exercise {
+  exercise: String
+  id: String
 }
 
 type Query {
-  fetchAllWorkouts: [Main]!
+  fetchAllExercises: [Exercise]
+  fetchAllWorkouts: [Workout]!
   fetchWorkout(id: String!): [Workout]!
 }
 
 type Workout {
+  exercieses: [Exercise]
   id: String
-  main: [String]
   muscleGroup: String
   workoutName: String
 }

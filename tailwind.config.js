@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      zIndex:{
+        60:60
+      },
       boxShadow: {
         'top': '0px -1px 3px 0px rgba(0,0,0,0.1)',
         'inner-input': 'inset 0 0 4px 0 rgb(0,0,0,0.15)'
@@ -21,6 +24,9 @@ module.exports = {
       screens: {
         '3xl': '1800px',
         '4xl': '2000px'
+      },
+      marginTop:{
+        "18": '4.5rem'
       }
 
     },
