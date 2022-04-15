@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 /sanity/node_modules
+<<<<<<< HEAD
+=======
+
+>>>>>>> aec02ed356f1b5221a8e00bd3d2f5fe61376c3df
 # testing
 /coverage
 
