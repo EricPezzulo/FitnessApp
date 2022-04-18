@@ -1,5 +1,4 @@
 import React from 'react'
-import CenterFeed from '../../components/CenterFeed'
 import Layout from '../../components/layout/Layout'
 import WeightroomCard from '../../components/WeightroomCard'
 

@@ -1,6 +1,6 @@
 export default {
   name: 'workout',
-  title: '',
+  title: 'Workout',
   type: 'document',
   fields: [
     {
@@ -31,12 +31,7 @@ export default {
         hotspot: true,
       },
     },
-    // {
-    //   name: 'muscleGroup',
-    //   title: 'Muscle Group',
-    //   type: 'array',
-    //   of: [{type: 'reference', to: {type: 'muscleGroup'}}],
-    // },
+
     {
       name: 'muscleGroup',
       title: 'Muscle Group',

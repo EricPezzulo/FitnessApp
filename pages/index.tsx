@@ -1,14 +1,13 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { useRecoilState } from 'recoil'
-import CenterFeed, { articles } from '../components/CenterFeed'
+// import { useRecoilState } from 'recoil'
+import { articles } from '../components/CenterFeed'
 import HomepagePost from '../components/homepage/HomepagePost'
-import { signInPopUpState } from '../components/layout/Header'
+// import { signInPopUpState } from '../components/layout/Header'
 import Layout from '../components/layout/Layout'
-import LeftSideBar from '../components/LeftSideBar'
 
 const Home: NextPage = () => {
-  const [signInPopUp, setSignInPopUp] = useRecoilState(signInPopUpState)
+  // const [signInPopUp, setSignInPopUp] = useRecoilState(signInPopUpState)
   const router = useRouter()
   return (
     <Layout>
@@ -21,8 +20,6 @@ const Home: NextPage = () => {
             </div>
           </div>
           <div className='w-full h-auto flex flex-col items-center justify-center'>
-
-          
           {articles.map((article, key): any => {
             return (
               <div key={key}>
