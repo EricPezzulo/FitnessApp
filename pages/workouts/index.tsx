@@ -25,7 +25,7 @@ export const Tile = ({workout}: any) => {
               <p className='group-hover:hidden duration-150 text-center relative'>{workout.title}</p>
               </div>
               <div className='flex flex-col text-center items-center justify-center'>
-               {workout.body.map((exercise:any) => {
+               {workout.main.map((exercise:any) => {
                 return (
                   <p key={exercise._key} className='text-2xl font-light sm:font-normal sm:text-base hidden group-hover:flex duration-150'>
                     {exercise.children[0].text}
@@ -56,7 +56,6 @@ const Workouts: NextPage = ({workouts}:any) => {
      <div className='flex flex-col min-h-full w-full bg-gray-50 z-40'>
      <div className='w-full overflow-auto flex items-center justify-center scrollbar-hide'>
             <div className='grid p-2 sm:container place-items-center gap-5 w-full md:p-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
-                    
                     {workouts.map((workout:any)=>{
                       return (
                         <div className='w-full' key={workout._id}>
@@ -64,15 +63,7 @@ const Workouts: NextPage = ({workouts}:any) => {
                         </div>
                       )
                     })
-                    
                     }
-                    {/* {list.map((elem,key):any => {
-                        return (
-                            <div className="flex w-full items-center justify-center" onClick={handleClick} key={key}>
-                                <Tile elem={elem} />
-                            </div>
-                        )
-                    })} */}
             </div>
         </div>
      </div>
@@ -96,7 +87,8 @@ export const getServerSideProps = async() => {
   mainImage {
     asset
   },
-  body,
+  main,
+  warmup
   }`
   const workouts = await sanityClient.fetch(query);
   return {

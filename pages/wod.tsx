@@ -19,7 +19,7 @@ const WOD: NextPage = ({wod}:any) => {
         <Layout>
             <div className="bg-gray-50 flex flex-col w-full items-center z-40">
                 <div className="mt-3">
-                    <h1 className="text-3xl">Workout Of The Day: <span className="text-yellow-400 font-semibold">{wod[0].title}</span></h1>
+                    <h1 className="text-3xl text-center">Workout Of The Day: <span className="text-yellow-400 font-semibold">{wod[0].title}</span></h1>
                 </div>
                 <div className="mt-5 text-lg bg-white p-3 shadow rounded-md">
                     <p>Workout Type: <span className="font-semibold">Bodybuilding</span></p>

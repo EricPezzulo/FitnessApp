@@ -45,10 +45,15 @@ export default {
       type: 'datetime',
     },
     {
-      name: 'body',
-      title: 'Body',
+      name: 'warmup',
+      title: 'Warm Up',
       type: 'blockContent',
     },
+    {
+      name: 'main',
+      title: 'Main',
+      type: 'blockContent',
+    }
   ],
 
   preview: {
