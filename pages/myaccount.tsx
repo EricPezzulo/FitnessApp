@@ -14,7 +14,6 @@ const myaccount = () => {
                 </div>
                     <div>
                         <p className="text-lg">Name: {session?.user?.name}</p>
-                      
 
                     </div>
                 </div>

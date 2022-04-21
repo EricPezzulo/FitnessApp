@@ -6,8 +6,10 @@ import { roomData as data } from '../../../roomData'
 import { Check } from "@styled-icons/bootstrap/Check"
 import { MinusCircle } from "@styled-icons/heroicons-outline/MinusCircle"
 import RoomCard from '../../../components/RoomCard'
+import { sanityClient } from '../../../sanity'
+import { ChessKing } from 'styled-icons/fa-solid'
 
-const WeightRoom: NextPage = () => {
+const WeightRoom: NextPage = ({workouts}:any) => {
   const router = useRouter()
   let roomType = router.query.id;
   const [room, setRoom] = useState("")
@@ -27,7 +29,7 @@ const WeightRoom: NextPage = () => {
     assignRoomType()
   }, [])
   let roomData = data.filter((elem) => elem.roomName === roomType)
-
+  console.log(workouts)
   return (
     <Layout>
       <div className='w-full h-full flex justify-center'>
@@ -61,15 +63,17 @@ const WeightRoom: NextPage = () => {
               {roomData[0].welcomeMsg}
             </p>
             <hr className='my-2'/>
-              <div className='flex w-full'>
-                <div className='shadow rounded p-3'></div>
-            </div>
+         
             <div className='grid place-items-center grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 w-full sm:py-10'>
-              <RoomCard title={"20 REP SQUAT PROGRAM"} img={"https://image.boxrox.com/2021/02/Front-Squat-workouts.jpg"} />
-              <RoomCard title={"20 REP SQUAT PROGRAM"} img={"https://image.boxrox.com/2021/02/Front-Squat-workouts.jpg"} />
-              <RoomCard title={"20 REP SQUAT PROGRAM"} img={"https://image.boxrox.com/2021/02/Front-Squat-workouts.jpg"} />
-              <RoomCard title={"20 REP SQUAT PROGRAM"} img={"https://image.boxrox.com/2021/02/Front-Squat-workouts.jpg"} />
-              <RoomCard title={"20 REP SQUAT PROGRAM"} img={"https://image.boxrox.com/2021/02/Front-Squat-workouts.jpg"} />
+              {
+                workouts.map((workout:any, key:any)=> {
+                  return (
+                      <div>
+                        <RoomCard workout={workout}/> 
+                      </div>
+                )
+                })
+              }
             </div>
           </div>
         </div>
@@ -79,3 +83,24 @@ const WeightRoom: NextPage = () => {
 }
 
 export default WeightRoom
+
+export const getServerSideProps = async (context:any) => {
+  console.log(context)
+  const query = `*[_type== $roomType]{
+    ...
+    }`
+  const workouts = await sanityClient.fetch(query, {
+    roomType: context.query?.id, 
+  })
+  
+  if (!workouts){
+    return {
+      notFound: true
+    }
+  }
+  return {
+    props:{
+      workouts
+    }
+  }
+}

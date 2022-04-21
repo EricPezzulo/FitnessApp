@@ -23,6 +23,7 @@ export const getServerSideProps = async ({params}:any) =>{
     main,
     warmup
   }`
+  console.log(params)
   const workout = await sanityClient.fetch(query, {
     id: params?.id
   })
@@ -41,7 +42,7 @@ export const getServerSideProps = async ({params}:any) =>{
 const index = ({workout}:any) => {
   const {data:session}:any = useSession()
   const [workoutSaved, setWorkoutSaved] = useState(false)
-  console.log(workout)
+  // console.log(workout)
   if(!session){
     return (
       <Layout>

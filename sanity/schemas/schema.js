@@ -10,6 +10,9 @@ import muscleGroup from './muscleGroup'
 import workout from './workout'
 import author from './author'
 import wod from './wod'
+import bodybuilding from './bodybuilding'
+import functionalfitness from './functionalfitness'
+import powerlifting from './powerlifting'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -24,6 +27,9 @@ export default createSchema({
     author,
     muscleGroup,
     wod,
+    bodybuilding,
+    functionalfitness,
+    powerlifting,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
