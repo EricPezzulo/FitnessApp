@@ -20,7 +20,7 @@ const Header = () => {
                     <p className='flex text-4xl text-yellow-500 font-semibold hover:cursor-pointer'>BUDDYWOD</p>
                 </Link>
             </div>
-            <div className='hidden sm:items-center sm:justify-center sm:flex'>
+            {/* <div className='hidden sm:items-center sm:justify-center sm:flex'>
                 <div className='flex bg-white px-2 py-1 shadow-inner-input rounded-md'>
                     <div className='w-8 text-gray-400'><SearchAlt /></div>
                     <input
@@ -28,7 +28,7 @@ const Header = () => {
                         placeholder="Search..."
                         className='text-xl font-light outline-none px-2 bg-transparent' />
                 </div>
-            </div>
+            </div> */}
 
             <div>
                 {!session ?

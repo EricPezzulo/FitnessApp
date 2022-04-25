@@ -41,6 +41,12 @@ export default {
         type: 'blockContent',
       },
       {
+        name: 'author',
+        title: 'Author',
+        type: 'reference',
+        to: {type: 'author'},
+      },
+      {
         name: 'main',
         title: 'Main',
         type: 'blockContent',

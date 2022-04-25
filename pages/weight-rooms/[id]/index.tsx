@@ -68,7 +68,7 @@ const WeightRoom: NextPage = ({workouts}:any) => {
               {
                 workouts.map((workout:any, key:any)=> {
                   return (
-                      <div>
+                      <div key={key}>
                         <RoomCard workout={workout}/> 
                       </div>
                 )
