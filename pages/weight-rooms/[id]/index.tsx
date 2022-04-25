@@ -34,7 +34,7 @@ const WeightRoom: NextPage = ({workouts}:any) => {
     <Layout>
       <div className='w-full h-full flex justify-center'>
         <div className='flex flex-col flex-1 h-full items-center z-40 max-w-7xl'>
-          <div className='grid place-items-center w-full  pb-5'>
+          <div className='grid place-items-center w-full pb-5'>
             <div className='flex group relative w-full h-full hover:cursor-pointer'>
               <div className='absolute w-full h-full bg-gray-900 bg-opacity-60 group-hover:bg-opacity-80 z-30 duration-200'></div>
               <img className='object-cover flex w-full max-h-108' src={roomData[0].heroImg} alt="hero" />
