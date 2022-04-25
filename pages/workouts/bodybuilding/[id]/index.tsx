@@ -5,6 +5,7 @@ import {Share} from "@styled-icons/boxicons-regular/Share"
 import { BookmarkBorder } from 'styled-icons/material-outlined';
 import { Bookmark } from 'styled-icons/bootstrap';
 import { sanityClient, urlFor } from '../../../../sanity'
+import {BookmarkCheckFill} from "@styled-icons/bootstrap/BookmarkCheckFill"
 
 const index = ({ workout }: any) => {
   const router = useRouter()
@@ -25,7 +26,6 @@ const index = ({ workout }: any) => {
                <h3 className='absolute flex justify-center items-center h-full w-full text-5xl text-yellow-400 text-center font-extrabold duration-200 z-30'>Bodybuilding</h3>
              </div>
         </div>
-        {/* <div className='w-full h-96 bg-yellow-400'></div> */}
         <div className='my-3 flex flex-col w-full sm:max-w-md '>
           <p className='text-3xl text-center'>{workout?.title}</p>
           <div className='text-lg flex items-center justify-between w-full px-3 pt-3 sm:px-0'>
@@ -35,7 +35,7 @@ const index = ({ workout }: any) => {
             </div>
              <div className='flex'>
                <div className='flex'>
-                 <button onClick={()=> setWorkoutSaved(!workoutSaved)} className='w-7 h-7 text-yellow-400 hover:cursor-pointer'>{workoutSaved ? <Bookmark/> : <BookmarkBorder/>}</button>
+                 <button onClick={()=> setWorkoutSaved(!workoutSaved)} className='w-7 h-7 text-yellow-400 hover:cursor-pointer'>{workoutSaved ? <BookmarkCheckFill/> :<Bookmark/> }</button>
                  <p className='text-gray-600'>{workoutSaved ? "unsave" : "save"}</p>
                </div>
         
@@ -77,7 +77,10 @@ export default index;
 
 export const getServerSideProps = async (context: any) => {
   const query = `*[_type== "bodybuilding" && slug.current == $id][0]{
-        ...
+        ...,
+        author -> {
+          ...
+        }
         }`
   const workout = await sanityClient.fetch(query, {
     id: context.query?.id
