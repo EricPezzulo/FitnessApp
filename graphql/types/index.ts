@@ -1,2 +1,2 @@
 export * from "./Workout"
-export * from "./Exercise"
+export * from "./User"

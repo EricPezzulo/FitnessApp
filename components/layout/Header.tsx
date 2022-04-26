@@ -4,6 +4,7 @@ import { SearchAlt } from "@styled-icons/boxicons-regular/SearchAlt"
 import Link from "next/link"
 import { signIn, signOut, useSession } from "next-auth/react"
 import Image from "next/image"
+import { useRouter } from "next/router"
 export const signInPopUpState = atom({
     key: "signInPopUpState",
     default: false
@@ -13,6 +14,7 @@ const Header = () => {
     // const [signedIn, setSignedIn] = useState(false)
     // const [signedInPopUp, setSignedInPopUp] = useRecoilState(signInPopUpState)
     const [toggleMenu, setToggleMenu] = useState(false)
+    const router = useRouter()
     return (
         <header className="px-2 bg-white flex h-20 w-full justify-between items-end pb-2  border-b shadow z-50">
             <div>
@@ -52,7 +54,7 @@ const Header = () => {
                         {toggleMenu && (
                             <div onMouseLeave={() => setToggleMenu(!toggleMenu)} className="z-50 sm:rounded bg-gray-600 bg-opacity-75 duration-150 hover:bg-opacity-100 w-full sm:w-44 sm:p-5 absolute top-20 left-0 sm:right-0 ">
                                 <ul className="relative text-2xl font-light text-center sm:text-lg">
-                                    <div className="duration-200 hover:text-yellow-400 hover:cursor-pointer border-b py-1 border-gray-400">
+                                    <div onClick={()=> router.push(`/myaccount`)} className="duration-200 hover:text-yellow-400 hover:cursor-pointer border-b py-1 border-gray-400">
                                         <li className=" duration-100
                                         ">My Account</li>
                                     </div>

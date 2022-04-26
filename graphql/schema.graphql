@@ -2,20 +2,26 @@
 ### Do not make changes to this file directly
 
 
-type Exercise {
-  exercise: String
-  id: String
+type Mutation {
+  saveWorkout(id: String, slug: String): SavedWorkout
 }
 
 type Query {
-  fetchAllExercises: [Exercise]
-  fetchAllWorkouts: [Workout]!
-  fetchWorkout(id: String!): [Workout]!
+  fetchAllUsers: [User]!
+  fetchUser(id: String!): [User]!
 }
 
-type Workout {
-  exercieses: [Exercise]
+type SavedWorkout {
   id: String
-  muscleGroup: String
-  workoutName: String
+  name: String
+  savedBy: [User]
+  slug: String
+}
+
+type User {
+  email: String
+  id: String
+  image: String
+  name: String
+  savedWorkouts: [SavedWorkout]
 }

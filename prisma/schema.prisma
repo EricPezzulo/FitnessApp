@@ -10,22 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Workout {
-  id          Int @id
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  workoutName String
-  muscleGroup String
-  exercise    Exercise[]
-}
-
-model Exercise {
-  id       Int    @id @unique
-  exercise String[]
-  Workout Workout? @relation(fields: [workoutId], references: [id])
-  workoutId Int? 
-}
-
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -52,6 +36,12 @@ model Session {
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+model SavedWorkout {
+  id            String    @id @default(cuid())
+  name          String?
+  slug          String
+  savedBy       User[]
+}
 
 model User {
   id            String    @id @default(cuid())
@@ -61,6 +51,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  savedWorkouts SavedWorkout[]
 }
 
 model VerificationToken {

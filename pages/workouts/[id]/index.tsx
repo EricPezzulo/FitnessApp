@@ -6,6 +6,7 @@ import { sanityClient, urlFor } from '../../../sanity'
 import {BookmarkBorder}from "@styled-icons/material-outlined/BookmarkBorder"
 import {Bookmark} from "@styled-icons/material-outlined/Bookmark"
 import {Share} from "@styled-icons/boxicons-regular/Share"
+import { useMutation } from '@apollo/client'
 export const getServerSideProps = async ({params}:any) =>{
 // Dynamic Query
   const query = `*[_type=="workout" && slug.current== $id][0]{
@@ -21,7 +22,8 @@ export const getServerSideProps = async ({params}:any) =>{
       asset
     },
     main,
-    warmup
+    warmup,
+    slug
   }`
   console.log(params)
   const workout = await sanityClient.fetch(query, {
@@ -39,10 +41,32 @@ export const getServerSideProps = async ({params}:any) =>{
   }
 }
 
+
+const SAVE_WORKOUT = gql`
+  mutation SaveWorkout($slug: String!){
+    saveWorkout(slug: $wSlug){
+      name
+    }
+  }
+`
+
+
 const index = ({workout}:any) => {
   const {data:session}:any = useSession()
   const [workoutSaved, setWorkoutSaved] = useState(false)
-  // console.log(workout)
+let wSlug = workout.slug.current
+const [mutateSaved] = useMutation(SAVE_WORKOUT,{
+  variables:{
+    id: wSlug
+  }
+})
+   const saveWorkout = async() => {
+
+    setWorkoutSaved(!workoutSaved)
+
+  } 
+  console.log(workout)
+
   if(!session){
     return (
       <Layout>
@@ -71,7 +95,7 @@ const index = ({workout}:any) => {
            </div>
             <div className='flex'>
               <div className='flex'>
-                <button onClick={()=> setWorkoutSaved(!workoutSaved)} className='w-7 h-7 text-yellow-400 hover:cursor-pointer'>{workoutSaved ? <Bookmark/> : <BookmarkBorder/>}</button>
+                <button onClick={saveWorkout} className='w-7 h-7 text-yellow-400 hover:cursor-pointer'>{workoutSaved ? <Bookmark/> : <BookmarkBorder/>}</button>
                 <p className='text-gray-600'>{workoutSaved ? "unsave" : "save"}</p>
               </div>
               
